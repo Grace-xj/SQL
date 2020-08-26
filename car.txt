@@ -1,0 +1,325 @@
+create database car;
+use car;
+
+CREATE TABLE rights (
+  id varchar(50) not null primary key,
+  name varchar(50)
+);
+
+
+CREATE TABLE user (
+  id varchar(20) not null primary key,
+  name varchar(20),
+  pswd varchar(20),
+  phone varchar(20),
+  Email varchar(50),
+  rightsId varchar(20),
+  foreign key(rightsId) references rights(id)
+);
+
+
+
+
+CREATE TABLE address (
+  id varchar(20) not null primary key,
+  address varchar(150),
+  kana varchar(150)
+);
+
+
+CREATE TABLE cusDetails (  
+  id varchar(20) not null primary key,
+  seikyusaki varchar(150),
+  simeMM1 varchar(5),
+  simeMM2 varchar(5),
+  simeDD varchar(5),
+  sifuDDkubun varchar(10),
+  sifuDD varchar(10),
+  sifukubun varchar(20),
+  shukinkubun varchar(20),
+  tiku varchar(20),
+  bumun varchar(10),
+  egyoName varchar(20),
+  SQsakikubun varchar(20),
+  DMsakikubun varchar(20),
+  DMsonka varchar(10),
+  totalkubun varchar(20),
+  totalinyou varchar(20),
+  nyukinkubun varchar(10),
+  syanaikubun varchar(5),
+  sagyoPer varchar(5),
+  buhinPer varchar(5),
+  yusiPer varchar(5),
+  G_sagyoPer varchar(5),
+  G_buhinPer varchar(5),
+  G_yusiPer varchar(5),
+  teikiyo varchar(10),
+  ipanyo varchar(10),
+  memo varchar(20),
+  syakensyo varchar(20),
+  syakenOrther varchar(20)
+);
+
+
+CREATE TABLE cusFree (
+  id varchar(20) not null primary key,
+  firstYYYYMMDD varchar(20),
+  syokaisya varchar(20),
+  syoyutaisu varchar(10),
+  memo1 varchar(20),
+  okuYYYYMMDD varchar(20),
+  dannaYYYYMMDD varchar(20),
+  kotomo1YYYYMMDD varchar(20),
+  kotomo2YYYYMMDD varchar(20),
+  keikonYYYYMMDD varchar(20),
+  kousinYYYYMMDD varchar(20),
+  memo2 varchar(20),
+  memo3 varchar(20),
+  syotyu varchar(10),
+  kanen varchar(10),
+  tyugen varchar(10),
+  seibo varchar(10),
+  loan varchar(10),
+  user varchar(10),
+  meno4 varchar(20),
+  meno5 varchar(20),
+  tokubetu varchar(10),
+  JAF varchar(10),
+  JAFYYYYMMDD varchar(20),
+  OIRU varchar(10),
+  OIRUYYYYMMDD varchar(20),
+  memo6 varchar(20),
+  memo7 varchar(20),
+  syumi varchar(20),
+  annai varchar(20),
+  memo8 varchar(20),
+  kaisyaName varchar(20),
+  tel varchar(20)
+); 
+
+
+CREATE TABLE cusInfo (
+  id varchar(20) not null primary key,
+  name varchar(20),
+  name2 varchar(10),
+  kana varchar(20),
+  addressId varchar(10),
+  postNo varchar(10),
+  address varchar(150),
+  addressKana varchar(150),
+  tel varchar(20),
+  phone varchar(20),
+  fax varchar(20),
+  email1 varchar(50),
+  email1Ka varchar(5),
+  email2 varchar(50),
+  email2Ka varchar(5),
+  email3 varchar(50),
+  email3Ka varchar(5),
+  nameCus varchar(20),
+  R_id varchar(20),
+  S_id varchar(20),
+  J_id varchar(20),
+  constraint c_fk1 foreign key(S_id) references cusDetails(id), 
+  constraint c_fk2 foreign key(J_id) references cusFree(id)
+);
+
+
+
+
+CREATE TABLE owner (
+  id varchar(20) not null primary key,
+  ownerName varchar(20),
+  ownerAddress varchar(150),
+  userName varchar(20),
+  userAddress varchar(150),
+  location varchar(150)
+);
+
+
+CREATE TABLE carDetails (  
+  id varchar(20) not null primary key,
+  dept varchar(20),
+  taker varchar(20),
+  directer varchar(20),
+  sagyoPer varchar(5),
+  buhinPer varchar(5),
+  yusiPer varchar(5),
+  G_sagyoPer varchar(5),
+  G_buhinPer varchar(5),
+  G_yusiPer varchar(5),
+  D_sizeA varchar(10),
+  D_sizeB varchar(10),
+  H_sizeA varchar(10),
+  H_sizeB varchar(10),
+  teikiyo varchar(10),
+  ipanyo varchar(10),
+  code varchar(10),
+  memo1 varchar(20),
+  S_name varchar(50),
+  S_meno varchar(50),
+  hanYYYYMMDD varchar(20),
+  noYYYYMMDD varchar(20),
+  grade varchar(20),
+  F_form varchar(20),
+  C_code varchar(20),
+  color varchar(20),
+  D_code varchar(20),
+  keyNomber varchar(20),
+  R_fee varchar(10),
+  R_ken varchar(20),
+  R_kenNomber varchar(20),
+  S_fee varchar(10),
+  E_fee varchar(10),
+  F_fee varchar(10),
+  J_fee varchar(10),
+  M_fee varchar(10),
+  total_fee varchar(10),
+  other_fee varchar(10)
+);
+
+
+CREATE TABLE carFree (
+  id varchar(20) not null primary key,
+  C_kaisha varchar(20),
+  oil varchar(20),
+  battery varchar(10),
+  selfPayNo varchar(20),
+  memo1 varchar(20),
+  memo2 varchar(20),
+  memo3 varchar(20),
+  memo4 varchar(20),
+  carYYYYMMDD varchar(20),
+  loanYYYYMMDD varchar(20),
+  leaseYYYYMMDD varchar(20),
+  memo5 varchar(20),
+  memo6 varchar(20),
+  memo7 varchar(20),
+  memo8 varchar(20),
+  memo9 varchar(20),
+  jiko varchar(10),
+  shuri varchar(10),
+  F_sobi varchar(10),
+  ABS varchar(10),
+  airbag varchar(10),
+  memo10 varchar(20),
+  memo11 varchar(20),
+  memo12 varchar(20),
+  memo13 varchar(10),
+  memo14 varchar(10),
+  memo15 varchar(10),
+  memo16 varchar(10),
+  memo17 varchar(10),
+  memo18 varchar(10),
+  memo19 varchar(10),
+  memo20 varchar(10)
+); 
+
+
+CREATE TABLE carReport (
+  id varchar(20) not null primary key,
+  name varchar(20),
+  memo1 varchar(20),
+  memo2 varchar(20),
+  memo3 varchar(20),
+  memo4 varchar(20),
+  memo5 varchar(20)
+); 
+
+
+CREATE TABLE carInfo (
+  id varchar(20) not null primary key,
+  T_YYYYMMDD varchar(20),
+  S_YYYYMM varchar(20),
+  species varchar(10),
+  used varchar(10),
+  user varchar(10),
+  shape varchar(50),
+  carName varchar(50),
+  people varchar(10),
+  max varchar(10),
+  weight varchar(10),
+  weight_total varchar(10),
+  number varchar(50),
+  length varchar(10),
+  width varchar(10),
+  htight varchar(10),
+  AA varchar(10),
+  AB varchar(10),
+  BA varchar(10),
+  BB varchar(10),
+  form varchar(50),
+  G_form varchar(50),
+  disp varchar(10),
+  fuel varchar(20),
+  K_number varchar(20),
+  R_number varchar(20),
+  owner_id varchar(20),
+  validYYYYMMDD varchar(20),
+  valid varchar(10),
+  other1 varchar(50),
+  other2 varchar(50),
+  other3 varchar(50),
+  other4 varchar(50),
+  other5 varchar(50),
+  other6 varchar(50),
+  other7 varchar(50),
+  other8 varchar(50),
+  other9 varchar(50),
+  other10 varchar(50),
+  C_id varchar(20),
+  D_id varchar(20),
+  F_id varchar(20),
+  P1 varchar(20),
+  P2 varchar(20),
+  P3 varchar(20),
+  P4 varchar(20),
+  P5 varchar(20),
+  P6 varchar(20),
+  P7 varchar(20),
+  P8 varchar(20),
+  P9 varchar(20),
+  P10 varchar(20),
+  R_id varchar(20),
+  constraint c_fk01 foreign key(owner_id) references owner(id),
+  constraint c_fk02 foreign key(C_id) references cusInfo(id),
+  constraint c_fk03 foreign key(D_id) references carDetails(id),
+  constraint c_fk04 foreign key(F_id) references carFree(id),
+  constraint c_fk05 foreign key(R_id) references carReport(id)
+);
+
+
+CREATE TABLE otherTax (
+  id varchar(20) not null primary key,
+  name varchar(20),
+  T01 varchar(20),
+  T02 varchar(20),
+  T03 varchar(20),
+  value varchar(20),
+  kubun varchar(20)
+); 
+
+
+
+
+insert into address (id, address, kana) values (0, 'ìåãûìsç]ìåãÊ', 'Ç∆Ç§Ç´ÇÂÇ§Ç∆Ç±Ç§Ç∆Ç§Ç≠');
+insert into address (id, address, kana) values (1, 'êÁótésâ‘å©êÏãÊ', 'ÇøÇŒÇµÇÕÇ»Ç›Ç™ÇÌÇ≠');
+insert into carReport (id) values (0);
+insert into otherTax (id,name,T01,T02,T03,value,kubun) values (1,'èdó ê≈','èåèÇP','èåèÇQ','èåèÇR',1000,0);
+insert into otherTax (id,name,T01,T02,T03,value,kubun) values (2,'é©îÖê”','èåèÇPÇP','èåèÇQÇQ','èåèÇRÇR',2000,0);
+
+commit;
+
+
+
+
+select * from cusinfo;
+select * from cusdetails;
+select * from cusfree;
+select * from carinfo;
+select * from cardetails;
+select * from carfree;
+
+
+
+

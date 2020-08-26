@@ -1,0 +1,137 @@
+CREATE TABLE user_food (
+  id varchar(50),
+  name varchar(50),
+  pswd varchar(50),
+  sex varchar(50),
+  age varchar(50),
+  phone varchar(50),
+  Email varchar(50),
+  infoId varchar(50),
+  rightsId varchar(50)
+);
+
+
+CREATE TABLE userInfo_food (
+  id varchar(50),
+  address varchar(50),
+  hireDate varchar(50),
+  assess varchar(50),
+  title varchar(50),
+  isDisplay varchar(50)
+);
+
+
+CREATE TABLE rights_food (
+  id varchar(50),
+  value varchar(50)
+);
+
+
+CREATE TABLE order_food (
+  id varchar(50),
+  orderId varchar(50),
+  menuId varchar(50),
+  addData varchar(50),
+  count varchar(50),
+  total varchar(50),
+  cookId varchar(50),
+  waiterId varchar(50),
+  tableId varchar(50),
+  compartmentId varchar(50),
+  isOut varchar(50)
+);
+
+
+CREATE TABLE menu_food (
+  id varchar(50),
+  name varchar(50),
+  costPrice varchar(50),
+  price varchar(50),
+  ingredient varchar(50),
+  typeId varchar(50)
+);
+
+
+CREATE TABLE type_food (
+  id varchar(50),
+  type varchar(50)
+);
+
+
+CREATE TABLE table_food (
+  id varchar(50),
+  name varchar(50),
+  isEmpty varchar(50),
+  seat varchar(50)
+);
+
+
+CREATE TABLE compartment_food (
+  id varchar(50),
+  name varchar(50),
+  isEmpty varchar(50),
+  seat varchar(50)
+);
+
+
+CREATE TABLE cook_food (
+  id varchar(50),
+  name varchar(50),
+  cookerRank varchar(50),
+  isPayOff varchar(50)
+);
+
+
+CREATE TABLE waiter_food (
+  id varchar(50),
+  name varchar(50),
+  waiterRank varchar(50),
+  isPayOff varchar(50)
+);
+
+
+CREATE TABLE star_food (
+  id varchar(50),
+  value varchar(50)
+);
+
+
+CREATE TABLE orderid_food (
+  id varchar(50)
+);
+
+
+CREATE TABLE Rightsid_food (
+  id varchar(50)
+);
+
+
+CREATE TABLE Starid_food (
+  id varchar(50)
+);
+
+
+CREATE TABLE typeid_food (
+  id varchar(50)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
