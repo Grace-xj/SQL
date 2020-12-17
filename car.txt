@@ -1,3 +1,4 @@
+drop database car;
 create database car;
 use car;
 
@@ -29,7 +30,8 @@ CREATE TABLE address (
 
 CREATE TABLE cusDetails (  
   id varchar(20) not null primary key,
-  seikyusaki varchar(150),
+  seikyusakiCode varchar(20),
+  seikyusaki varchar(20),
   simeMM1 varchar(5),
   simeMM2 varchar(5),
   simeDD varchar(5),
@@ -101,7 +103,6 @@ CREATE TABLE cusFree (
 CREATE TABLE cusInfo (
   id varchar(20) not null primary key,
   name varchar(20),
-  name2 varchar(10),
   kana varchar(20),
   addressId varchar(10),
   postNo varchar(10),
@@ -111,11 +112,8 @@ CREATE TABLE cusInfo (
   phone varchar(20),
   fax varchar(20),
   email1 varchar(50),
-  email1Ka varchar(5),
   email2 varchar(50),
-  email2Ka varchar(5),
   email3 varchar(50),
-  email3Ka varchar(5),
   nameCus varchar(20),
   R_id varchar(20),
   S_id varchar(20),
@@ -228,7 +226,10 @@ CREATE TABLE carReport (
 
 
 CREATE TABLE carInfo (
-  id varchar(20) not null primary key,
+  id1 varchar(20) not null,
+  id2 varchar(20) not null,
+  id3 varchar(20) not null,
+  id4 varchar(20) not null,
   T_YYYYMMDD varchar(20),
   S_YYYYMM varchar(20),
   species varchar(10),
@@ -267,20 +268,12 @@ CREATE TABLE carInfo (
   other8 varchar(50),
   other9 varchar(50),
   other10 varchar(50),
+  totalothers varchar(10),
   C_id varchar(20),
   D_id varchar(20),
   F_id varchar(20),
-  P1 varchar(20),
-  P2 varchar(20),
-  P3 varchar(20),
-  P4 varchar(20),
-  P5 varchar(20),
-  P6 varchar(20),
-  P7 varchar(20),
-  P8 varchar(20),
-  P9 varchar(20),
-  P10 varchar(20),
   R_id varchar(20),
+  primary key(id1,id2,id3,id4),
   constraint c_fk01 foreign key(owner_id) references owner(id),
   constraint c_fk02 foreign key(C_id) references cusInfo(id),
   constraint c_fk03 foreign key(D_id) references carDetails(id),
@@ -300,6 +293,16 @@ CREATE TABLE otherTax (
 ); 
 
 
+CREATE TABLE Tax (
+  id varchar(20) not null primary key,
+  value varchar(20),
+  kubun varchar(20)
+); 
+
+
+insert into Tax (id,value,kubun) values (1,1.1,1);
+insert into Tax (id,value,kubun) values (1,1.2,0);
+commit;
 
 
 insert into address (id, address, kana) values (0, '“Œ‹“s]“Œ‹æ', '‚Æ‚¤‚«‚å‚¤‚Æ‚±‚¤‚Æ‚¤‚­');
@@ -307,7 +310,8 @@ insert into address (id, address, kana) values (1, 'ç—ts‰ÔŒ©ì‹æ', '‚¿‚Î‚µ‚Í‚È
 insert into carReport (id) values (0);
 insert into otherTax (id,name,T01,T02,T03,value,kubun) values (1,'d—ÊÅ','ğŒ‚P','ğŒ‚Q','ğŒ‚R',1000,0);
 insert into otherTax (id,name,T01,T02,T03,value,kubun) values (2,'©”…Ó','ğŒ‚P‚P','ğŒ‚Q‚Q','ğŒ‚R‚R',2000,0);
-
+insert into otherTax (id,name,T01,T02,T03,value,kubun) values (3,'d—ÊÅ2','ğŒ‚P','ğŒ‚Q‚Q','ğŒ‚R',3000,0);
+insert into otherTax (id,name,T01,T02,T03,value,kubun) values (4,'d—ÊÅ3','ğŒ‚P','ğŒ‚Q‚Q','ğŒ‚R‚R',4000,0);
 commit;
 
 
@@ -319,6 +323,150 @@ select * from cusfree;
 select * from carinfo;
 select * from cardetails;
 select * from carfree;
+
+
+
+
+CREATE TABLE orderCar (
+  id varchar(20) not null primary key,
+  form varchar(20),
+  G_form varchar(20),
+  jyoken varchar(20),
+  S_YYYYMM varchar(20),
+  T_YYYYMMDD varchar(20),
+  formNo varchar(20),
+  number varchar(20),
+  moving varchar(20),
+  time varchar(20),
+  nextS_YYYYMMDD varchar(20),
+  nextT_YYYYMMDD varchar(20),
+  grade varchar(20),
+  F_form varchar(20),
+  C_code varchar(20),
+  color varchar(20),
+  D_code varchar(20),
+  ownerId varchar(20),
+  ownerName varchar(20)
+); 
+
+
+CREATE TABLE workCounts (
+  code varchar(20) not null,
+  memo varchar(20),
+  object varchar(20),
+  price varchar(20)
+); 
+CREATE TABLE carParts (
+  code varchar(20) not null,
+  memo varchar(20),
+  object varchar(20),
+  price varchar(20)
+); 
+CREATE TABLE orderDetail (
+  id varchar(20) not null,
+  code varchar(20),
+  memo varchar(200),
+  object varchar(20),
+  price varchar(20),
+  total varchar(20)
+); 
+insert into workCounts ( code, memo, object, price ) values ('W0001','workCounts1','1.10','0.9');
+insert into workCounts ( code, memo, object, price ) values ('W0001','workCounts2','1.10','0.8');
+insert into workCounts ( code, memo, object, price ) values ('W0002','workCounts3','1.10','0.7');
+insert into carParts ( code, memo, object, price ) values ('P0001','carParts1','1.10','0.1');
+commit;
+
+
+CREATE TABLE orderMoney (
+  id varchar(20) not null primary key,
+  name1 varchar(10),
+  name2 varchar(10),
+  name3 varchar(10),
+  name4 varchar(10),
+  name5 varchar(10),
+  name6 varchar(10),
+  name7 varchar(10),
+  name8 varchar(10),
+  name9 varchar(10),
+  name10 varchar(10),
+  money1 varchar(10),
+  money2 varchar(10),
+  money3 varchar(10),
+  money4 varchar(10),
+  money5 varchar(10),
+  money6 varchar(10),
+  money7 varchar(10),
+  money8 varchar(10),
+  money9 varchar(10),
+  money10 varchar(10),
+  rmoney1 varchar(10),
+  rmoney2 varchar(10),
+  rmoney3 varchar(10),
+  rmoney4 varchar(10),
+  rmoney5 varchar(10),
+  rmoney6 varchar(10),
+  rmoney7 varchar(10),
+  rmoney8 varchar(10),
+  rmoney9 varchar(10),
+  rmoney10 varchar(10),
+  recycleNoTax varchar(10),
+  recycleByTax varchar(10),
+  totalNoTax varchar(10),
+  totalByTax varchar(10),
+  taxtotal varchar(10),
+  total varchar(20),
+  RrecycleNoTax varchar(10),
+  RrecycleByTax varchar(10),
+  RtotalNoTax varchar(10),
+  RtotalByTax varchar(10),
+  Rtaxtotal varchar(10),
+  Rtotal varchar(20)
+); 
+
+
+CREATE TABLE orderInfo (
+  id varchar(20) not null primary key,
+  inId varchar(20),
+  carId1 varchar(20),
+  carId2 varchar(20),
+  carId3 varchar(20),
+  carId4 varchar(20),
+  maker varchar(20),
+  carName varchar(20),
+  hakoYYYYMMDD varchar(20),
+  nyukoYYYYMMDD varchar(20),
+  orderYYYYMMDD varchar(20),
+  endYYYYMMDD varchar(20),
+  oderSyurui varchar(20),
+  Lkubun varchar(20),
+  orderName varchar(20),
+  Skubun varchar(20),
+  egyoName varchar(20),
+  tiku varchar(20),
+  taker varchar(20),
+  bumun varchar(20),
+  directer varchar(20),
+  syanakubun varchar(20),
+  teikiyo varchar(20),
+  ipanyo varchar(20),
+  cusId varchar(20),
+  cusName varchar(20),
+  cusKana varchar(20),
+  seikyusakiCode varchar(20),
+  seikyusakiName varchar(20),
+  seikyusakiAddressId varchar(20),
+  seikyusakiPostNo varchar(20),
+  seikyusakiAddress varchar(150),
+  seikyusakiTEL varchar(20),
+  seikyusakiPhone varchar(20),
+  seikyusakiFAX varchar(20),
+  bikou varchar(200),
+  orderCarId varchar(20),
+  orderDetailId varchar(20),
+  orderMoneyId varchar(20),
+  constraint c_fk11 foreign key(orderCarId) references orderCar(id),
+  constraint c_fk12 foreign key(orderMoneyId) references orderMoney(id)
+); 
 
 
 
